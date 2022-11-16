@@ -11294,11 +11294,11 @@ async function main() {
 
         core.info('Creating repo')
 
-        // await client.repos.createInOrg({
-        //     org: org,
-        //     name: repoToCreate,
-        //     private: false
-        // })
+        await client.repos.createInOrg({
+            org: org,
+            name: repoToCreate,
+            private: false
+        })
 
         core.debug('Repo created')
 
