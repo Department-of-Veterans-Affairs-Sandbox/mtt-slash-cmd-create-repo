@@ -11285,12 +11285,12 @@ async function main() {
         core.debug('Client created')
 
         //log info 
-        core.info(`ACTOR: ${actor}`)
-        core.info(`body: ${_body}`)
-        core.info(`ORG: ${org}`)
-        core.info(`REPO: ${repo}`)
-        core.info(`REPO to create: ${repoToCreate}`)
-            //
+        // core.info(`ACTOR: ${actor}`)
+        // core.info(`body: ${_body}`)
+        // core.info(`ORG: ${org}`)
+        // core.info(`REPO: ${repo}`)
+        // core.info(`REPO to create: ${repoToCreate}`)
+        //
 
         core.info('Creating repo')
 
