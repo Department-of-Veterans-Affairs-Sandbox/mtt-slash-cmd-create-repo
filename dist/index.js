@@ -11292,6 +11292,21 @@ async function main() {
         // core.info(`REPO to create: ${repoToCreate}`)
         //
 
+        //mtt
+        core.info('Geting repo')
+        await client.repos.get({
+                //org: org,
+                //name: repoToCreate,
+                //private: false
+                owner: org,
+                repo: repoToCreate
+            })
+            .then((data) => {
+                core.info(data)
+            })
+        core.info('Got repo')
+            //
+
         core.info('Creating repo')
 
         await client.repos.createInOrg({
