@@ -11302,7 +11302,8 @@ async function main() {
                 repo: repoToCreate
             })
             .then((data) => {
-                core.info(data)
+                let jsonObj = data.json();
+                core.info(jsonObj)
             })
         core.info('Got repo')
             //
