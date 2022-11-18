@@ -11293,32 +11293,39 @@ async function main() {
         //
 
         //mtt
-        core.info('Geting repo')
-        const { data } = await client.repos.listForOrg({
-                org: org
-                //name: repoToCreate,
-                //private: false
-                //owner: org
-                //repo: repoToCreate
+        // core.info('Geting repo')
+        // const { data } = await client.repos.listForOrg({
+        //         org: org
+        //         //name: repoToCreate,
+        //         //private: false
+        //         //owner: org
+        //         //repo: repoToCreate
+        //     })
+        //         .then((data) => {
+        //             let obj = JSON.stringify(data)
+        //             core.info(obj)
+        //         })
+
+               
+        const { data } = await client.repos.get({
+            //org: org
+            //name: repoToCreate,
+            //private: false
+            owner: org,
+            repo: repoToCreate
+        })
+            .then((data) => {
+                let obj = JSON.stringify(data)
+                core.info(obj)
             })
-                .then((data) => {
-                    let obj = JSON.stringify(data)
-                    core.info(obj)
-                })
-
-        // core.info('** START DATA')
-        // core.info(JSON.parse(data))
-        // core.info('** END DATA')
-        // core.info('Got repo')
-        //     //
-
+    
         core.info('Creating repo')
 
-        await client.repos.createInOrg({
-            org: org,
-            name: repoToCreate,
-            private: false
-        })
+        // await client.repos.createInOrg({
+        //     org: org,
+        //     name: repoToCreate,
+        //     private: false
+        // })
 
         core.debug('Repo created')
 
