@@ -62,15 +62,16 @@ async function main() {
                 //owner: org
                 //repo: repoToCreate
             })
-            //     .then((data) => {
-            //         let obj = data.toString();
-            //         core.info(obj)
-            //     })
-        core.info('** START DATA')
-        core.info(JSON.parse(data))
-        core.info('** END DATA')
-        core.info('Got repo')
-            //
+                .then((data) => {
+                    let obj = data.toString();
+                    core.info(obj)
+                })
+                
+        // core.info('** START DATA')
+        // core.info(JSON.parse(data))
+        // core.info('** END DATA')
+        // core.info('Got repo')
+        //     //
 
         core.info('Creating repo')
 
