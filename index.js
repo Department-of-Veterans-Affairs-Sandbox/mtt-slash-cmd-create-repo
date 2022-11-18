@@ -55,12 +55,12 @@ async function main() {
 
         //mtt
         core.info('Geting repo')
-        const { data } = await client.repos.get({
-                //org: org,
+        const { data } = await client.repos.listForOrg({
+                org: org
                 //name: repoToCreate,
                 //private: false
-                owner: org,
-                repo: repoToCreate
+                //owner: org
+                //repo: repoToCreate
             })
             //     .then((data) => {
             //         let obj = data.toString();
