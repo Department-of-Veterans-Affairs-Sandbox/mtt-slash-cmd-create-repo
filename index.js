@@ -63,10 +63,10 @@ async function main() {
                 //repo: repoToCreate
             })
                 .then((data) => {
-                    let obj = data.toString();
+                    let obj = JSON.stringify(data)
                     core.info(obj)
                 })
-                
+
         // core.info('** START DATA')
         // core.info(JSON.parse(data))
         // core.info('** END DATA')
