@@ -11307,13 +11307,13 @@ async function main() {
         //         })
 
                
-        const { data } = await client.repos.get({
+        await client.repos.get({
             owner: org,
             repo: repoToCreate
         })
-            .then((data) => {
-                let obj = JSON.stringify(data)
-                core.info(obj)
+            .then((response) => {
+                let data = JSON.stringify(response)
+                core.info(data)
             })
     
         //core.info('Creating repo')
