@@ -46,11 +46,11 @@ async function main() {
         core.debug('Client created')
 
         //log info 
-        // core.info(`ACTOR: ${actor}`)
-        // core.info(`body: ${_body}`)
-        // core.info(`ORG: ${org}`)
-        // core.info(`REPO: ${repo}`)
-        // core.info(`REPO to create: ${repoToCreate}`)
+        core.info(`ACTOR: ${actor}`)
+        core.info(`body: ${_body}`)
+        core.info(`ORG: ${org}`)
+        core.info(`REPO: ${repo}`)
+        core.info(`REPO to create: ${repoToCreate}`)
         //
 
         //mtt
@@ -69,9 +69,6 @@ async function main() {
 
                
         const { data } = await client.repos.get({
-            //org: org
-            //name: repoToCreate,
-            //private: false
             owner: org,
             repo: repoToCreate
         })
@@ -80,7 +77,7 @@ async function main() {
                 core.info(obj)
             })
     
-        core.info('Creating repo')
+        //core.info('Creating repo')
 
         // await client.repos.createInOrg({
         //     org: org,
@@ -88,35 +85,13 @@ async function main() {
         //     private: false
         // })
 
-        core.debug('Repo created')
+        //core.debug('Repo created')
 
     } catch (e) {
         failed = true
         core.setFailed(`Failed to create repo: ${e.message}`)
     }
 
-    // try {
-    //     core.info('Creating client')
-    //     const client = await newClient(githubToken)
-    //     core.debug('Client created')
-
-    //     let message
-    //     if (failed) {
-    //         message = `@${actor} failed to archive repo ${repoToArchive}`
-    //     } else {
-    //         message = `@${actor} archived repo ${repoToArchive}`
-    //     }
-    //     core.info('Creating issue')
-    //     await client.issues.createComment({
-    //         owner: org,
-    //         repo: repo,
-    //         issue_number: issueNumber,
-    //         body: message
-    //     })
-    //     core.debug('Issue created')
-    // } catch (e) {
-    //     core.setFailed(`Failed to comment on issue: ${e.message}`)
-    // }
 }
 
 main().catch(e => core.setFailed(e.message))
