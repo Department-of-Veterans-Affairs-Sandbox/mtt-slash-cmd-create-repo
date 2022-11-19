@@ -49,25 +49,12 @@ async function main() {
         core.info(`ACTOR: ${actor}`)
         core.info(`body: ${_body}`)
         core.info(`ORG: ${org}`)
-        core.info(`REPO: ${repo}`)
+        core.info(`Current REPO: ${repo}`)
         core.info(`REPO to create: ${repoToCreate}`)
         //
 
-        //mtt
-        // core.info('Geting repo')
-        // const { data } = await client.repos.listForOrg({
-        //         org: org
-        //         //name: repoToCreate,
-        //         //private: false
-        //         //owner: org
-        //         //repo: repoToCreate
-        //     })
-        //         .then((data) => {
-        //             let obj = JSON.stringify(data)
-        //             core.info(obj)
-        //         })
-
-               
+        let repoExist = true;
+        core.info('Getting repo')
         await client.repos.get({
             owner: org,
             repo: repoToCreate
@@ -76,16 +63,25 @@ async function main() {
                 let data = JSON.stringify(response)
                 core.info(data)
             })
-    
-        //core.info('Creating repo')
+            .catch((e) => {
+                repoExist = false;
+                core.error(e.message)
+            })
+        core.info('Got repo')    
 
-        // await client.repos.createInOrg({
-        //     org: org,
-        //     name: repoToCreate,
-        //     private: false
-        // })
+        if(!repoExist){
+            core.info(`Creating repo ${repoToCreate}`)
 
-        //core.debug('Repo created')
+            await client.repos.createInOrg({
+                org: org,
+                name: repoToCreate,
+                private: false
+            })
+
+            core.info(`Created repo ${repoToCreate}`)
+        }else{
+            core.info(`Repo ${repoToCreate} already exists in org {org}` )
+        }
 
     } catch (e) {
         failed = true
