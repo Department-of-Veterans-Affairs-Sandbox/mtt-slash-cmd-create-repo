@@ -11324,7 +11324,7 @@ async function main() {
             message = `Created repo ${repoToCreate}`
             core.info(message)
         }else{
-            message = `Repo ${repoToCreate} already exists in org {org}`
+            message = `Repo ${repoToCreate} already exists in org ${org}`
             core.info(message)
         }
 
